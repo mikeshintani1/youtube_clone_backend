@@ -1,0 +1,1 @@
+CREATE DATABASE youtube_clone_database
