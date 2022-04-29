@@ -22,7 +22,7 @@ def get_all_comments(request):
 @api_view(['GET', 'PUT', 'POST'])
 @permission_classes([IsAuthenticated])
 def yt_comment_prop(request, pk):
-    yt_protected = get_object_or_404(Comment, pk=pk)
+    yt_protected = get_object_or_404(Comment, pk=id)
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'PUT':
