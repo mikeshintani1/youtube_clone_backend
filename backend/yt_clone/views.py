@@ -14,20 +14,19 @@ from rest_framework.decorators import api_view, permission_classes
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def yt_comment_get(request, pk):
-
-    comment_pk = get_object_or_404(Comment, pk=pk)
-    if request.method == 'GET':
-        serializer = CommentSerializer(comment_pk)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+def get_all_comments(request):
+    comments = Comment.objects.all()
+    serializer = CommentSerializer(comments, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'POST'])
 @permission_classes([IsAuthenticated])
-def yt_comment_prop(request):
+def yt_comment_prop(request, pk):
+    yt_protected = get_object_or_404(Comment, pk=pk)
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'PUT':
-        serializer = CommentSerializer(user, data=request.data)
+        serializer = CommentSerializer(user=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
