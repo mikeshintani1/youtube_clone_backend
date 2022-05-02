@@ -45,8 +45,8 @@ def yt_comment_prop(request, pk):
 
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
-def yt_clone_replies(request,pk):
-    yt_protected = get_object_or_404(Reply, pk=pk)
+def yt_clone_replies(request, pk):
+    
     print(
     'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':
@@ -56,7 +56,8 @@ def yt_clone_replies(request,pk):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        reply = Reply.objects.filter(user_id=request.user.id)
+        reply = get_object_or_404(Reply, pk=pk)
+        reply = Reply.objects.filter(comment_id=request.user.id)
         serializer = ReplySerializer(reply, many=True)
         return Response(serializer.data)
 
