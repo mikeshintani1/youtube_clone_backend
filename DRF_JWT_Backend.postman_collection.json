@@ -401,6 +401,38 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get_Replies_By_Comment_Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMzczMzM0LCJpYXQiOjE2NTE1MDkyMzYsImp0aSI6ImIwM2JjOGYwMzdjZTRjZjZhYzg3OThkYjdmNDJhNjQ3IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.572J1A45OCKwPxkiA2NymNgtXzhCWCOHVPXaJoO96_A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/yt_clone/1/replies/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"yt_clone",
+								"1",
+								"replies",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
