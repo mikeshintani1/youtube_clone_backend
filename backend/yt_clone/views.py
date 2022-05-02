@@ -43,9 +43,9 @@ def yt_comment_prop(request, pk):
         return Response(serializer.data)
 
 
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def yt_clone_replies(request, pk):
+def yt_clone_replies(request):
     
     print(
     'User ', f"{request.user.id} {request.user.email} {request.user.username}")
@@ -55,10 +55,14 @@ def yt_clone_replies(request, pk):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'GET':
-        reply = get_object_or_404(Reply, pk=pk)
-        reply = Reply.objects.filter(comment_id=request.user.id)
-        serializer = ReplySerializer(reply, many=True)
-        return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_all_replies(request, pk):
+
+    reply = Reply.objects.filter(comment_id=pk)
+    serializer = ReplySerializer(reply, many=True)
+    return Response(serializer.data)
 
 
