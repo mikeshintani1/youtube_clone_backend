@@ -25,11 +25,11 @@ def yt_comment_prop(request, pk):
     yt_protected = get_object_or_404(Comment, pk=pk)
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    # if request.method == 'PUT':
-    #     serializer = CommentSerializer(user=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
+    if request.method == 'PUT':
+        serializer = CommentSerializer(yt_protected, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
     if request.method == 'POST':
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
