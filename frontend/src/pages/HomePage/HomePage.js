@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
+// import SearchBar from "../../components/SearchBar/searchBar";
+import CreatePost from "../../components/CommentForm/commentForm";
 import axios from "axios";
 
 const HomePage = () => {
@@ -29,6 +30,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
+      <CreatePost />
       {cars &&
         cars.map((car) => (
           <p key={car.id}>
