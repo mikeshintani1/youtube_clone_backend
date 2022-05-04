@@ -9,9 +9,9 @@ const SearchBar = (props) => {
   
     function searchBar(event) {
         event.preventDefault();
-        let response = props.videos.filter((videos) => {
+        let response = props.videos.filter((video) => {
     
-        if (videos.album.includes(searchVideo)) { 
+        if (video.album.includes(searchVideo)) { 
             return true;
             } else if (video.artist.includes(searchVideo)) {
                 return true;

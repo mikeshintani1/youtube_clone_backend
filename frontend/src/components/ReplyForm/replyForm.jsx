@@ -18,14 +18,14 @@ const CreateReply = (props) => {
     }
 
     return (
-        <form onSubmit={handleReply} className='form-grid'>
-            <div className='form-groupo'>
+        <form onSubmit={handleReply} className='reply_form'>
+            <div className='reply_form'>
                 <label>Name</label>
-                <input type='text' className='form-control' value={name} onChange = {(event) => setName(event.target.value)}/> 
+                <input type='text' className='formo-control' value={name} onChange = {(event) => setName(event.target.value)}/> 
             </div>
-            <div className='form-groupo'>
+            <div className='reply_form'>
                 <label>REPLY</label>
-                <input type='text' className='form-control' value={reply} onChange={(event) => setReply(event.target.value)}/>
+                <input type='text' className='formo-control' value={reply} onChange={(event) => setReply(event.target.value)}/>
             </div>
                 <button type='onClick' className="buttonSubmit" style={{'margin-top': '1em'}}>CREATE</button>
         </form>
