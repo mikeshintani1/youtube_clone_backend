@@ -1,14 +1,20 @@
 import {} from 'react-router-dom'
 import React from 'react';
+import SearchBar from '../SearchBar/searchBar'
 
 
 
 const VideoPlayer = () => {
 
   return(
-    <iframe id="ytplayer" type="text/html" width='640' height='360 src=https://www.youtube.com/embed/{SEARCHRESULT}?autoplayer=1&origin=http://example.com' frameborder='0'>
+    <iframe id="ytplayer" type="text/html" width='640' height='360' src='https://www.youtube.com/embed/{SearchBar}?autoplayer=1&origin=http://example.com' frameborder='0'>
 
     </iframe>
+
+
+
+
+
   );
 }
 
