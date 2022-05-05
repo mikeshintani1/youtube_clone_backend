@@ -35,8 +35,7 @@ const HomePage = () => {
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
       <div>
-      <SearchBar />
-      <VideoPlayer />
+
       <CreatePost />
       <CreateReply/>
 
