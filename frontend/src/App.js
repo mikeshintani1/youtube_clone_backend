@@ -7,12 +7,13 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import VideoPage from "./pages/VideoPage/videoPage";
+import SearchPage from "./components/SearchPage/SearchPage"
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import SearchBar from "./components/SearchBar/searchBar";
-import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
+import VideoPlayer from "./components/VideoPlayer/videoPlayer";
 
 
 // Util Imports
@@ -24,18 +25,22 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
 
-  const [searchVideoes, setSearchVideoes] = useState([]);
+  const [searchVideos, setSearchVideoes] = useState([]);
+  const [currentVideoId, setCurrentVideoId] = useState("vrAMRxBB5KI")
+  // make hook to save related video results
+
 
   useEffect(() => {
     getSearchVideo()
   }, [])
 
-  async function getSearchVideo(searchTerm = ''){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8&part=snippet&maxResults=5`)
+  async function getSearchVideo(searchTerm ="bob ross"){
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8&part=snippet&maxResults=5`)
     console.log(response.data.items)
     setSearchVideoes(response.data.items)
   }
-
+// make another axios call for related videos, you will plug in currentVideoId in this one just like you did searchTerm in the above example
+/// then you will need to pass the value saved in the hook above down to a compoent do display the related videos, just like you did with SearchPage
 
 
 
@@ -49,8 +54,8 @@ function App() {
             <PrivateRoute>
               <HomePage />
               <SearchBar getSearchVideo={getSearchVideo} />
-              <VideoPlayer />
-              <searchPage videos={searchVideoes}/>
+              <VideoPlayer videoId={currentVideoId}/>
+              <SearchPage videos={searchVideos} setId={setCurrentVideoId}/>
   
   
             </PrivateRoute>

@@ -5,7 +5,7 @@ import CreatePost from "../../components/CommentForm/commentForm";
 import axios from "axios";
 import CustomButton from "../../components/LikeDislikeButton/LikeDislike";
 import CreateReply from "../../components/ReplyForm/replyForm";
-import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
+import VideoPlayer from "../../components/VideoPlayer/videoPlayer";
 import SearchBar from "../../components/SearchBar/searchBar";
 
 const HomePage = () => {

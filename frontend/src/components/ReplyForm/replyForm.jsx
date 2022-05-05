@@ -34,3 +34,9 @@ const CreateReply = (props) => {
 }
 
 export default CreateReply;
+
+
+// search bar results need to populate into video snippet squares
+// how many squares?
+// what line of code is required to ping YT api for search results?
+// how to get video snippet to open in the primary video page?
