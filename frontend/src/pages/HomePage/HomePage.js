@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-// import SearchBar from "../../components/SearchBar/searchBar";
 import CreatePost from "../../components/CommentForm/commentForm";
 import axios from "axios";
 import CustomButton from "../../components/LikeDislikeButton/LikeDislike";
 import CreateReply from "../../components/ReplyForm/replyForm";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
+import SearchBar from "../../components/SearchBar/searchBar";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -14,7 +14,7 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [video, setVideo] = useState([]);
-  const [reply, setReply] = useState([]);
+  // const [reply, setReply] = useState([]);
 
   useEffect(() => {
     const fetchVideo = async () => {
@@ -35,9 +35,11 @@ const HomePage = () => {
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
       <div>
+      <SearchBar />
       <VideoPlayer />
       <CreatePost />
       <CreateReply/>
+
       </div>
       <CustomButton message="CACA"/>
       {video &&

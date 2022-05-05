@@ -10,7 +10,7 @@ const handleClick = (event, id, title, description) => {
     props.getVideoComments()
 
 
-return (
+    return (
     <div className='searchResults'>
         <div className = 'allRelatedVideos'>
             {props.video.map(video => (

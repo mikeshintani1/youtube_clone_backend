@@ -6,8 +6,11 @@ import SearchBar from '../SearchBar/searchBar'
 
 const VideoPlayer = () => {
 
+  ytSearch = https//www.youtube.com/embed/search_query=?autoplayer=1&origin=http://example.com
+
   return(
-    <iframe id="ytplayer" type="text/html" width='640' height='360' src='https://www.youtube.com/embed/{SearchBar}?autoplayer=1&origin=http://example.com' frameborder='0'>
+
+    <iframe id="ytplayer" type="text/html" width='640' height='360' src='ytSearch' frameborder='0'>
 
     </iframe>
 
