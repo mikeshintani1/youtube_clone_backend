@@ -29,7 +29,8 @@ function App() {
   const [searchVideos, setSearchVideoes] = useState([]);
   const [currentVideoId, setCurrentVideoId] = useState("vrAMRxBB5KI")
   const [relatedVideoId, setRelatedVideoId] = useState("vrAMRxBB5KI")
-  // make hook to save related video results
+  const [currentVideoTitle, setCurrentVideoTitle] = useState("vrAMRxBB5KI")
+  
 
 
   useEffect(() => {
@@ -47,8 +48,14 @@ function App() {
     setRelatedVideoId(response.data.items)
   
   }
-// make another axios call for related videos, you will plug in currentVideoId in this one just like you did searchTerm in the above example
-/// then you will need to pass the value saved in the hook above down to a compoent do display the related videos, just like you did with SearchPage
+  async function getVideoInfo(searchTerm = {currentVideoTitle}){
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${currentVideoId}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8`)
+    console.log(response.data.items)
+    setCurrentVideoTitle(response.data.items)
+  
+  }
+
+
 
 
 
@@ -62,7 +69,7 @@ function App() {
             <PrivateRoute>
               <HomePage />
               <SearchBar getSearchVideo={getSearchVideo} />
-              <VideoPlayer videoId={currentVideoId}/>
+              <VideoPlayer videoId={currentVideoId} videoTitle = {currentVideoTitle}/>
               <SearchPage videos={searchVideos} setId={setCurrentVideoId}/>
               <RelatedVideos videos={relatedVideoId} setId={setCurrentVideoId}/>
   

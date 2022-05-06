@@ -5,14 +5,40 @@ import SearchBar from '../SearchBar/searchBar'
 
 
 const VideoPlayer = (props) => {
+
+  const handleClickVideoInfo = (event, id, title, description) => {
+    event.preventDefault();
+    props.getVideoInfo(id, title, description);
+    // props.getRelatedVideoList(title);
+    // props.getVideoComments()
+  }
+
+
+  
   
 
   return(
     <div>
+
+      <div> 
+        {props.videos.map((video) => (
+          
+            <span>
+              onClick={(event) => handleClickVideoInfo(event, video.id.videoId, video.title, video.description)}
+              src={`https://www.youtube.com/embed/${props.videoId}`}
+                    <div class='VideoTitle'>
+                      {video.title}
+                      {video.description}
+                    </div>
+             </span>
+          ))}
+      </div>
+    
+
     <iframe id="ytplayer" type="text/html" width='640' height='360' src={`https://www.youtube.com/embed/${props.videoId}`} frameBorder='0'>
     </iframe>
     </div>
-  );
+  )
 }
 
 export default VideoPlayer

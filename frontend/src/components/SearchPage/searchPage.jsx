@@ -12,6 +12,7 @@ const handleClick = (event, id, title, description) => {
     // props.getVideoComments()
 }
 
+
 return (
     <div className='searchResults'>
         <div className = 'allRelatedVideos'>
