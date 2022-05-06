@@ -21,6 +21,7 @@ import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import PrivateRoute from "./utils/PrivateRoute";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
+import RelatedVids from "./components/SearchPage/RelatedVids";
 
 
 
@@ -40,21 +41,21 @@ function App() {
   }, [])
 
   async function getSearchVideo(searchTerm ="bob ross"){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8&part=snippet&maxResults=5`)
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&key=AIzaSyD70oB-hMmV-re9RaOLtE8d7nAA5CNYwv8&part=snippet&maxResults=5`)
     console.log(response.data.items)
-    setSearchVideoes(response.data.items)
     setCurrentVideoId(response.data.items[0].id.videoId)
     setTitle(response.data.items[0].snippet.title)
     setDescription(response.data.items[0].snippet.description)
+    setSearchVideoes(response.data.items)
   }
-  async function getRelatedVideo(searchTerm = {currentVideoId}){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${currentVideoId}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8`)
-    console.log(response.data.items)
-    setRelatedVideoId(response.data.items)
+  // async function getRelatedVideo(searchTerm = {currentVideoId}){
+  //   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${currentVideoId}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8&part=snippet`)
+  //   console.log(response.data.items)
+  //   setRelatedVideoId(response.data.items)
   
-  }
+  // }
   async function getVideoInfo(searchTerm = {currentVideoTitle}){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${currentVideoId}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8`)
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${currentVideoId}&type=video&key=AIzaSyD70oB-hMmV-re9RaOLtE8d7nAA5CNYwv8`)
     console.log(response.data.items)
     setCurrentVideoTitle(response.data.items)
   
@@ -75,9 +76,9 @@ function App() {
               <HomePage />
               <SearchBar getSearchVideo={getSearchVideo} />
               <VideoPlayer videoId={currentVideoId} title = {title} description={description} videoInfo ={currentVideoTitle} videos={searchVideos}/>
-              <SearchPage videos={searchVideos} setId={setCurrentVideoId}/>
-              <RelatedVideos videos={relatedVideoId} setId={setCurrentVideoId}/>
-  
+              <SearchPage videos={searchVideos} setTitle={setTitle} setId={setCurrentVideoId}/>
+              {/* <RelatedVideos videos={relatedVideoId} setId={setCurrentVideoId}/> */}
+              <RelatedVids videoId = {currentVideoId}/>
   
             </PrivateRoute>
           }

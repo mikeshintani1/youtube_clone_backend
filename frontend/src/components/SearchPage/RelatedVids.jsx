@@ -1,7 +1,21 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
-const SearchPage = (props) => {
+const RelatedVids = (props) => {
+    const [relatedVids, setRelatedVids] = useState([])
+
+    async function getRelatedVideo(){
+        debugger
+     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${props.videoId}&key=AIzaSyD70oB-hMmV-re9RaOLtE8d7nAA5CNYwv8&part=snippet&type=video`)
+     console.log('Related vids: ',response.data.items)
+     //setRelatedVideoId(response.data.items)
+  
+   }
+   useEffect(()=>{
+    getRelatedVideo()
+   },[props.videoId])
 
 
 const handleClick = (event, id, title, description) => {
@@ -16,7 +30,8 @@ const handleClick = (event, id, title, description) => {
 
 return (
     <div className='searchResults'>
-        <div className = 'allRelatedVideos'>
+        {console.log('videoID: ', props.videoId)}
+        {/* <div className = 'allRelatedVideos'>
             {props.videos.map((video) => (
                   <span>
                     <div class='relatedVideo'>
@@ -30,10 +45,10 @@ return (
                     </div>
                 </span>    
             ))}
-        </div>
+        </div> */}
     </div>
 )
 }    
 
 
-export default SearchPage;
+export default RelatedVids;
