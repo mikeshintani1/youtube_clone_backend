@@ -14,7 +14,7 @@ import RelatedVideos from "./components/RelatedVideos/RelatedVideos"
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import SearchBar from "./components/SearchBar/searchBar";
-import VideoPlayer from "./components/VideoPlayer/videoPlayer";
+import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 
 
 // Util Imports
@@ -29,7 +29,7 @@ function App() {
   const [searchVideos, setSearchVideoes] = useState([]);
   const [currentVideoId, setCurrentVideoId] = useState("vrAMRxBB5KI")
   const [relatedVideoId, setRelatedVideoId] = useState("vrAMRxBB5KI")
-  const [currentVideoTitle, setCurrentVideoTitle] = useState("vrAMRxBB5KI")
+  // const [currentVideoTitle, setCurrentVideoTitle] = useState("vrAMRxBB5KI")
   
 
 
@@ -48,12 +48,12 @@ function App() {
     setRelatedVideoId(response.data.items)
   
   }
-  async function getVideoInfo(searchTerm = {currentVideoTitle}){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${currentVideoId}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8`)
-    console.log(response.data.items)
-    setCurrentVideoTitle(response.data.items)
+  // async function getVideoInfo(searchTerm = {currentVideoTitle}){
+  //   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${currentVideoId}&type=video&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8`)
+  //   console.log(response.data.items)
+  //   setCurrentVideoTitle(response.data.items)
   
-  }
+  // }
 
 
 
@@ -69,7 +69,7 @@ function App() {
             <PrivateRoute>
               <HomePage />
               <SearchBar getSearchVideo={getSearchVideo} />
-              <VideoPlayer videoId={currentVideoId} videoTitle = {currentVideoTitle}/>
+              <VideoPlayer videoId={currentVideoId} />
               <SearchPage videos={searchVideos} setId={setCurrentVideoId}/>
               <RelatedVideos videos={relatedVideoId} setId={setCurrentVideoId}/>
   

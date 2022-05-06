@@ -1,17 +1,17 @@
 import {} from 'react-router-dom'
 import React from 'react';
-import SearchBar from '../SearchBar/searchBar'
+
 
 
 
 const VideoPlayer = (props) => {
 
-  const handleClickVideoInfo = (event, id, title, description) => {
-    event.preventDefault();
-    props.getVideoInfo(id, title, description);
-    // props.getRelatedVideoList(title);
-    // props.getVideoComments()
-  }
+  // const handleClickVideoInfo = (event, id, title, description) => {
+  //   event.preventDefault();
+  //   props.getVideoInfo(id, title, description);
+  //   // props.getRelatedVideoList(title);
+  //   // props.getVideoComments()
+  // }
 
 
   
@@ -20,7 +20,7 @@ const VideoPlayer = (props) => {
   return(
     <div>
 
-      <div> 
+      {/* <div> 
         {props.videos.map((video) => (
           
             <span>
@@ -33,10 +33,10 @@ const VideoPlayer = (props) => {
              </span>
           ))}
       </div>
-    
+     */}
 
-    <iframe id="ytplayer" type="text/html" width='640' height='360' src={`https://www.youtube.com/embed/${props.videoId}`} frameBorder='0'>
-    </iframe>
+      <iframe id="ytplayer" type="text/html" width='640' height='360' src={`https://www.youtube.com/embed/${props.videoId}`} frameBorder='0'>
+      </iframe>
     </div>
   )
 }
