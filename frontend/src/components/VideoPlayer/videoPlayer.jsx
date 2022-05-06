@@ -6,12 +6,12 @@ import React from 'react';
 
 const VideoPlayer = (props) => {
 
-  // const handleClickVideoInfo = (event, id, title, description) => {
-  //   event.preventDefault();
-  //   props.getVideoInfo(id, title, description);
-  //   // props.getRelatedVideoList(title);
-  //   // props.getVideoComments()
-  // }
+  const handleClickVideoInfo = (event, id, title, description) => {
+    event.preventDefault();
+    props.getVideoInfo(id, title, description);
+    // props.getRelatedVideoList(title);
+    // props.getVideoComments()
+  }
 
 
   
@@ -24,19 +24,21 @@ const VideoPlayer = (props) => {
         {props.videos.map((video) => (
           
             <span>
-              onClick={(event) => handleClickVideoInfo(event, video.id.videoId, video.title, video.description)}
-              src={`https://www.youtube.com/embed/${props.videoId}`}
+              onClick={(event) => handleClickVideoInfo(event, video.id.videoId, video.snippet.title, video.snippet.description)}
+              src={video.snippet.title}
                     <div class='VideoTitle'>
-                      {video.title}
-                      {video.description}
+                      {video.snippet.title}
+                      {video.snippet.description}
                     </div>
              </span>
           ))}
-      </div>
-     */}
+      </div> */}
+    
 
       <iframe id="ytplayer" type="text/html" width='640' height='360' src={`https://www.youtube.com/embed/${props.videoId}`} frameBorder='0'>
       </iframe>
+      <h1>{props.title}</h1>
+      <h2>{props.description}</h2>
     </div>
   )
 }
