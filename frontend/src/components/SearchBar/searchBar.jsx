@@ -22,7 +22,7 @@ return (
         <form >
         <div>
             <input
-                className='searchVideo'
+                className='searchVideocss'
                 type="text"
                 value={searchVideo}
                 onChange={(e) =>  setSearchVideo(e.target.value)}

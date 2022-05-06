@@ -56,3 +56,23 @@ button:hover {
   padding: 3px 7px;
   font-size: 17px;
 }
+
+.searchvideo{
+  display:grid
+}
+
+.allRelatedVideos{
+  display: inline-flex;
+  width: 50%;
+  column-span: none;
+  height: 50%;
+  margin-left: 7%
+}
+
+.searchResults{
+  display: grid
+}
+
+.createpost{
+  display: inline-block;
+}

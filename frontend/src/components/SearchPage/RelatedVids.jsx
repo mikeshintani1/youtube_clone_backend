@@ -7,7 +7,6 @@ const RelatedVids = (props) => {
     const [relatedVids, setRelatedVids] = useState([])
 
     async function getRelatedVideo(){
-        debugger
      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${props.videoId}&key=AIzaSyD70oB-hMmV-re9RaOLtE8d7nAA5CNYwv8&part=snippet&type=video`)
      console.log('Related vids: ',response.data.items)
      //setRelatedVideoId(response.data.items)

@@ -1,0 +1,8 @@
+.SearchBar{
+    display: flexbox;
+    margin-left: 40%
+}
+
+.findvideo{
+    box-sizing: content-box; 
+}

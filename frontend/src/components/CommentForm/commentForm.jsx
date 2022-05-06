@@ -1,6 +1,7 @@
 import {} from 'react-router-dom'
 import React, { useState } from 'react';
-
+import axios from 'axios';
+import { useEffect } from 'react/cjs/react.production.min';
 
 const CreatePost = (props) => {
 
@@ -14,16 +15,17 @@ const CreatePost = (props) => {
             post: post
         };
         console.log(newPost);
-        props.createNewPostProperty(newPost);
+        props.addNewPostProperty(newPost);
+    
+ 
     }
-
     return (
-        <form onSubmit={handleSubmit} className='form-grid'>
+        <form onSubmit={handleSubmit} className='formgrid'>
             <div className='form-group'>
                 <label>Name</label>
                 <input type='text' className='form-control' value={name} onChange = {(event) => setName((event.target.value))}/> 
             </div>
-            <div className='form-group'>
+            <div className='formgrid'>
                 <label>Post</label>
                 <input type='text' className='form-control' value={post} onChange={(event) => setPost(event.target.value)}/>
             </div>

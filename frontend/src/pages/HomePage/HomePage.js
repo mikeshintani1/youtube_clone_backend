@@ -7,6 +7,7 @@ import CustomButton from "../../components/LikeDislikeButton/LikeDislike";
 import CreateReply from "../../components/ReplyForm/replyForm";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import SearchBar from "../../components/SearchBar/searchBar";
+import DisplayPost from "../../components/CommentList/commentList";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -36,8 +37,6 @@ const HomePage = () => {
       <h1>Home Page for {user.username}!</h1>
       <div>
 
-      <CreatePost />
-      <CreateReply/>
 
       </div>
       <CustomButton message="CACA"/>

@@ -15,7 +15,10 @@ import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import SearchBar from "./components/SearchBar/searchBar";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
-
+import NameForm from "./components/NameForm/NameForm";
+import DisplayPost from "./components/CommentList/commentList";
+import CreatePost from "./components/CommentForm/commentForm";
+import CreateReply from "./components/ReplyForm/replyForm";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -33,7 +36,14 @@ function App() {
   const [currentVideoTitle, setCurrentVideoTitle] = useState("vrAMRxBB5KI")
   const [title,setTitle]=useState('')
   const [description,setDescription]=useState('')
-  
+
+
+  const [entries, setEntries] = useState([{name:'Bob Biggums', post: 'I like pie'}])
+
+  async function addNewPost(entry){
+    let tempEntries = [...entries,entry];
+    setEntries(tempEntries);
+  }
 
 
   useEffect(() => {
@@ -63,8 +73,6 @@ function App() {
 
 
 
-
-
   return (
     <div>
       <Navbar />
@@ -74,11 +82,17 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage />
-              <SearchBar getSearchVideo={getSearchVideo} />
               <VideoPlayer videoId={currentVideoId} title = {title} description={description} videoInfo ={currentVideoTitle} videos={searchVideos}/>
-              <SearchPage videos={searchVideos} setTitle={setTitle} setId={setCurrentVideoId}/>
+              <CreatePost className='createpost' />
+              <DisplayPost className='displaypost' parentPosts = {entries}/>
+              {/* <NameForm addNewPostProperty={addNewPost}/> */}
+              <SearchBar className='searchvideo' getSearchVideo={getSearchVideo} />
               {/* <RelatedVideos videos={relatedVideoId} setId={setCurrentVideoId}/> */}
               <RelatedVids videoId = {currentVideoId}/>
+              <SearchPage videos={searchVideos} setTitle={setTitle} setId={setCurrentVideoId}/>
+              <div className='row-createcomment'>
+    
+              </div>
   
             </PrivateRoute>
           }
