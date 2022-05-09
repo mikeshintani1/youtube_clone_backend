@@ -20,8 +20,8 @@ const CustomButton = (props) => {
 
     return (
         <div className='button-col'>
-            <button className={likeButtonClass} type='onClick' onClick={handleClicklike} message="like">{props.message}</button>
-            <button className={hateButtonClass} type='onClick' onClick={handleClickhate} message ="hate">{props.message}</button>
+            <button className={likeButtonClass} type='onClick' onClick={handleClicklike} message="Like">{props.message}Like</button>
+            <button className={hateButtonClass} type='onClick' onClick={handleClickhate} message ="Dislike">{props.message}Dislike</button>
         </div>
     );
        

@@ -1,7 +1,7 @@
-<<<<<<< Updated upstream
-=======
+
 import {} from 'react-router-dom'
 import ReactDOM from "react-dom";
+
 
 const comments = [
     {user: 'Mike'},
@@ -16,8 +16,9 @@ const CommentList = (props) => {
 
     return ( 
         <div>
+            {/* Working on getting Comments to Display */}
 
-            {comments.map((comment) =>{
+            {/* {comments.map((comment) =>{
                 return (
                     <div>
                         {comment.user}
@@ -28,42 +29,17 @@ const CommentList = (props) => {
 
                     </div>
                 );
-            })}
+            })} */}
         </div>
      );
 }
  
 export default CommentList;
 
-ReactDOM.render(<CommentList/>)
-
->>>>>>> Stashed changes
+// ReactDOM.render(<CommentList/>)
 
 
 
-const DisplayPost = (props) => {
 
-    return(
-        <table className="table" chartType='Table'>
-            <thead>
-                <tr>
-                <th scope="col" className ="name-col">Name</th>
-                <th scope="col" className='post-col'>Post</th>
 
-                </tr>
-            </thead>
-                <tbody>
-                    {props.parentPosts.map((entry,index) => {
-                    return(
-                        <tr key={index}>
-                            <td>{entry.name}</td>
-                            <td className='comment-col'>{entry.comment}</td>
 
-                        </tr>
-                    );
-                    })}
-                </tbody>
-        </table>
-    );
-                }
-export default DisplayPost;

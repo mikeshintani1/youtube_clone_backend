@@ -8,9 +8,7 @@ import CustomButton from "../../components/LikeDislikeButton/LikeDislike";
 import CreateReply from "../../components/ReplyForm/replyForm";
 import CreatePost from '../../components/CommentForm/CommentForm';
 import CommentList from "../../components/CommentList/CommentList";
-import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
-import SearchBar from "../../components/SearchBar/searchBar";
-import DisplayPost from "../../components/CommentList/commentList";
+
 
 const HomePage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -22,21 +20,21 @@ const HomePage = (props) => {
   const [comments, setComments] = useState([]);
   const [newComments, setNewComments] = useState([])
 
-  // useEffect(() => {
-  //   const fetchVideo = async () => {
-  //     try {
-  //       let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=BKLcz0Aeh08&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8", {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       });
-  //       setVideo(response.data);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   fetchVideo();
-  // }, [token]);
+  useEffect(() => {
+    const fetchVideo = async () => {
+      try {
+        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=BKLcz0Aeh08&key=AIzaSyCjBTtSq2A2IWbTfV0uUN-LMhuBc2UzKM8", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setVideo(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchVideo();
+  }, [token]);
 
 
   
@@ -86,12 +84,11 @@ const HomePage = (props) => {
       <h1>Home Page for {user.username}!</h1>
       <div>
 
-<<<<<<< Updated upstream
-=======
+
       <CreatePost />
       <CreateReply/>
       <CommentList comments={comments}/>
->>>>>>> Stashed changes
+
 
       </div>
       <CustomButton message="CACA"/>
