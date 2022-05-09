@@ -91,7 +91,7 @@ const HomePage = (props) => {
 
 
       </div>
-      <CustomButton message="CACA"/>
+      <CustomButton message="X"/>
       {video &&
         video.map((el) => (
           <p key={el.id}>
